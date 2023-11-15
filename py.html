@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <h1>hello</h1>
+    <py-script src="py.py">
+        import openai
+
+        openai.api_key = "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"
+
+
+        questions = {
+        "Q1": "Which Subject you are interested in"
+        }
+
+        def collect_responses():    
+        responses = {}
+        print("Welcome to Career Guidance AI!")
+        for q_key, question in questions.items():
+        response = input(f"{question}\nYour Answer: ")
+        responses[q_key] = response
+        return responses
+
+    def generate_analysis(responses):
+    prompt = "\n".join([f"""
+                        This is the responses and questions of the Student that I want to give career guidance
+                        Q: {questions[q]}\nA: {a}\n
+Analyze the data, If the student is interested in Maths at problem solving then he can Pursue Engineering, If the student is interested in biology he can pursue Medicine, If the student is interested in business he can choice Economics. Respond and give the data accordingly. 
+""" for q, a in responses.items()])
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        temperature=0.3,
+        max_tokens=90,
+    )
+    analysis = response.choices[0].text.strip()
+    return analysis
+
+def main():
+    user_responses = collect_responses()
+    analysis = generate_analysis(user_responses)
+    
+    print("\nCareer Guidance Analysis:")
+    print(analysis)
+
+if _name_ == "__main__":
+    main()
+    </py-script>
+</body>
+</html> -->
